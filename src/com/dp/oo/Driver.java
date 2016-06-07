@@ -5,12 +5,13 @@ public class Driver {
    
    public String getName() {
 	return name;
-   }
+
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
-   public Driver(String name){
-	   this.name = name;
+	public Driver(String name){
+	   this.name = name; 
    }
    public void drive(Car c){
       c.go(new Address("shanghai")); // hidden and encapsulate
