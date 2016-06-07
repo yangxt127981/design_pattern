@@ -12,6 +12,7 @@ public class Driver {
 	}
 	public Driver(String name){
 	   this.name = name; 
+
    }
    public void drive(Car c){
       c.go(new Address("shanghai")); // hidden and encapsulate
