@@ -1,4 +1,4 @@
-package com.dp.oo;
+package com.dp.oo.polymophism;
 
 public class Car extends Vihecle{
   private String brand;
