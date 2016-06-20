@@ -18,6 +18,16 @@ public class App {
 //		df.createWoodFloor().printWoodFloor();
 //		df.createWoodTop().printWoodTop();
 		
+		
+		/*use simple factory, so many factory*/
+//		DoorFactory df = new woodDoorFactory();
+//		FloorFactory ff = new woodFloorFactory();
+//		TopFactory tf = new woodTopFactory();
+//        df.createWoodDoor().pringDoor();
+//        ff.createWoodFloor().printWoodFloor();
+//		df.createWoodTop().printWoodTop();
+		
+		
 		/*use abstract factory to implement extensibility, only need change factory type*/
 		AbstractFactory af = new ModernFactory();
 		af.createDoor().pringDoor();
