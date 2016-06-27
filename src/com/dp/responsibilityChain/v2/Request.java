@@ -1,4 +1,4 @@
-package com.dp.responsibilityChain;
+package com.dp.responsibilityChain.v2;
 
 public class Request {
   private String resquestString;
