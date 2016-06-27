@@ -1,5 +1,5 @@
 package com.dp.responsibilityChain.v2;
 
 public interface Filter {
-   public String doFilter(String str);
+   public void doFilter(Request req, Response res, FilterChain chain);
 }

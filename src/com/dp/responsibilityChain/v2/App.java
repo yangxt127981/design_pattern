@@ -1,26 +1,26 @@
 package com.dp.responsibilityChain.v2;
 
 public class App {
-
+   /*simulate web filter, order: request: htmlfilter, sensitive filter, face filter
+    * response: face filter, sensitive filter, html filter*/
 	public static void main(String[] args) {
          String msg = "hello everyone$<script>, fuck";
-         MsgProcessor mp = new MsgProcessor();
+         Request req = new Request();
+         req.setResquestString(msg);
+         Response res = new Response();
+         res.setResponseString("reponse");
          
          FilterChain fc = new FilterChain();
          
-         FilterChain fc2 = new FilterChain();
-         fc2.addFilter(new FaceFilter());
-         /*filter chain is also a filter, so a filter chain 
-          * can merge to another filter chain */
-         
+                
          fc.addFilter(new HtmlFilter())
-         .addFilter(fc2)
-         .addFilter(new SensitiveFilter());
+         .addFilter(new SensitiveFilter())
+         .addFilter(new FaceFilter());
          
-         mp.setFc(fc);
-         String result = mp.process(msg);
+         fc.doFilter(req, res,fc);
+         System.out.println(req.getResquestString());
+         System.out.println(res.getResponseString());
 
-         System.out.println(result);
 	}
 
 }
