@@ -1,4 +1,4 @@
-package com.dp.proxy.v1;
+package com.dp.proxy.v2;
 
 import java.util.Random;
 
@@ -13,5 +13,7 @@ public class Tank implements Moveable{
 			e.printStackTrace();
 		}
 	}
+
+	
    
 }
