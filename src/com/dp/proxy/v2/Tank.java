@@ -14,6 +14,16 @@ public class Tank implements Moveable{
 		}
 	}
 
+	@Override
+	public void stop() {
+		System.out.print("tank stop...");	
+		try {
+			Thread.sleep(new Random().nextInt(10000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}		
+	}
+
 	
    
 }

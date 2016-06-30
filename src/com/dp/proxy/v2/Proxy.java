@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -14,7 +15,21 @@ import javax.tools.ToolProvider;
 
 public class Proxy {
    public static Object newProxyInstance(Class infce) throws Exception{
+	   String methodStr = "";
 	   String rt="\r\n";
+
+	   Method[] methods = infce.getMethods();
+	    for(Method m:methods){
+	    	methodStr += "@Override" + rt 
+	    			     + "public void " + m.getName()
+	    			     +"() {" + rt +
+	    			     "long start = System.currentTimeMillis();"+ rt +
+    					 "t."+ m.getName() +"();" + rt +
+	    				 "long end = System.currentTimeMillis();"+ rt +
+	    				 "System.out.println(\"total run time:\"+(end-start));"+	rt
+	    			     
+	    			     + "}";
+	    }
 	   String src = "package com.dp.proxy.v2;"
        +"public class TankTimeProxy implements "+infce.getName()+"{"+ rt+
        "private Moveable t;"+ rt +
@@ -23,15 +38,10 @@ public class Proxy {
 		"	this.t = t;"+ rt +
 		"}"+ rt+
 		
-		"@Override"+ rt +
-		"public void move() {"+ rt +
-			"long start = System.currentTimeMillis();"+ rt +
-			"t.move();"+	
-			"long end = System.currentTimeMillis();"+ rt +
-			"System.out.println(\"total run time:\"+(end-start));"+	rt+
-		"}"+"}";
-	   String fileName = System.getProperty("user.dir")
-			   +"/src/com/dp/proxy/v2/TankTimeProxy.java";
+		methodStr
+			
+		+"}";
+	   String fileName = "d:/src/com/dp/proxy/v2/TankTimeProxy.java";
 	   File f = new File(fileName);
 	   FileWriter fw = new FileWriter(f);
 	   fw.write(src);
@@ -48,14 +58,14 @@ public class Proxy {
 	   fileMgr.close();
 	   
 	   //load into memory and generate instance
-	   URL[] urls = new URL[] {new URL("file:/"+System.getProperty("user.dir")+"/src")};
+	   URL[] urls = new URL[] {new URL("file:/"+"d:/src/")};
 	   System.out.println("urls"+urls[0]);
 	   URLClassLoader ul = new URLClassLoader(urls);
 	   Class c = ul.loadClass("com.dp.proxy.v2.TankTimeProxy");
        
 	   Constructor ctr = c.getConstructor(Moveable.class);
-       Moveable m = (Moveable)ctr.newInstance(new Tank());
-       m.move();
-	   return null;
+       Object m = ctr.newInstance(new Tank());
+       //m.move();
+	   return m;
    }
 }
