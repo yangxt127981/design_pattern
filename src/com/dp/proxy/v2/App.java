@@ -1,12 +1,12 @@
 package com.dp.proxy.v2;
 
-import java.io.IOException;
 
 public class App {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
         Tank t = new Tank();
-        Moveable m =(Moveable) Proxy.newProxyInstance();
+        //can generate any class proxy, pass interface as parameter
+        Moveable m =(Moveable) Proxy.newProxyInstance(Moveable.class);
         m.move();
 	}
 

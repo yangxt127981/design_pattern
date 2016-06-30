@@ -14,7 +14,7 @@ import javax.tools.JavaCompiler.CompilationTask;
 public class Test1 {
 
 	public static void main(String[] args) throws Exception{
-		 String rt="\r\n";
+		   String rt="\r\n";
 		   String src = "package com.dp.proxy.v2;"
 	       +"public class TankTimeProxy implements Moveable{"+ rt+
 	       "private Moveable t;"+ rt +
