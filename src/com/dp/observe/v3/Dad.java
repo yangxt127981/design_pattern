@@ -1,4 +1,4 @@
-package com.observe.v3;
+package com.dp.observe.v3;
 
 public class Dad implements WakenUpListener{
   private Child c = new Child();

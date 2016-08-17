@@ -1,4 +1,4 @@
-package com.observe.v2;
+package com.dp.observe.v2;
 
 public class Dad{
   private Child c = new Child();

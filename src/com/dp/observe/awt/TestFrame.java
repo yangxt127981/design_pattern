@@ -1,4 +1,4 @@
-package com.observe.awt;
+package com.dp.observe.awt;
 
 import java.awt.Button;
 import java.awt.Frame;
