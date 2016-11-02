@@ -8,7 +8,7 @@ public class PropertyMgr {
 	private static Properties props = new Properties();
     static{
 	   try {
-			props.load(App.class.getClassLoader().getResourceAsStream("com/observe/v3/observer.properties"));
+			props.load(App.class.getClassLoader().getResourceAsStream("com/dp/observe/v3/observer.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
